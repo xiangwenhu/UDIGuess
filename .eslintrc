@@ -1,0 +1,70 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "extends": ["airbnb", "eslint:recommended"],
+  "plugins": [],
+  "rules": {
+    "linebreak-style": "off",
+    "no-useless-escape": 0,
+    "experimentalDecorators": 0,
+    "no-unneeded-ternary": 0,
+    "no-nested-ternary": 0,
+    "no-else-return": 0,
+    "no-unused-expressions": 0,
+    "no-mixed-operators": 0,
+    "valid-typeof": 0,
+    "import/first": 0,
+    "import/no-extraneous-dependencies": 0,
+    "one-var": [
+      "error",
+      { "var": "always", "let": "always", "const": "never" }
+    ],
+    "no-plusplus": 0,
+    "padded-blocks": ["error", { "classes": "never" }],
+    "no-restricted-syntax": 0,
+    "object-shorthand": 2,
+    "spaced-comment": 0,
+    "arrow-parens": 0,
+    "quotes": 0,
+    "arrow-body-style": 0,
+    "no-param-reassign": 0,
+    "no-trailing-spaces": 0,
+    "comma-dangle": 0,
+    "indent": 0,
+    "global-require": 0,
+    "no-use-before-define": 0,
+    "max-len": 0,
+    "no-console": 0, // disallow use of console (off by default in the node environment)
+    "max-params": [2, { "max": 10 }],
+    "no-var": 2,
+    "no-undef": 2, // disallow use of undeclared variables unless mentioned in a /*global */ block
+    "block-scoped-var": 0, // treat var statements as if they were block scoped (off by default)
+    "complexity": 0, // specify the maximum cyclomatic complexity allowed in a program (off by default)
+    "consistent-return": 0, // require return statements to either always or never specify values
+    // allow async-await
+    "generator-star-spacing": 1,
+    "no-return-assign": 2, // disallow use of assignment in return statement
+    "no-unused-vars": [
+      "error",
+      {
+        "caughtErrors": "none",
+        "varsIgnorePattern": "[iI]gnored|React",
+        "args": "none",
+        "ignoreRestSiblings": true,
+        "caughtErrorsIgnorePattern": "^ignore"
+      }
+    ]
+  },
+
+  "globals": {
+    "window": true,
+    "fetch": true,
+    "console": true,
+    "document": true,
+    "alert": true,
+    "navigator": true,
+    "localStorage": true
+  }
+}

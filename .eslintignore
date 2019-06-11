@@ -1,0 +1,4 @@
+dist/
+build/
+package.json
+src/js/lib
