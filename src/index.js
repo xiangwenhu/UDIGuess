@@ -1,19 +1,16 @@
-import { getMouseEventName } from "./js/util";
+import { getMouseEventName ,strToArray} from "./js/util";
 import PlayerDrawer from "./js/playerDrawer";
 import { PlayerClient } from "./js/client";
+import getSize from "./js/getSize";
 
-const canvasCol = document.querySelectorAll(".board");
-// 固定比例  95 ： 50
-const width = document.documentElement.clientWidth * 0.95;
-const height = ~~(document.documentElement.clientWidth * 0.5);
-
+const size = getSize();
+const canvasCol = document.querySelectorAll("canvas");
 Array.from(canvasCol).forEach(function(c) {
-  c.height = height;
-  c.width = width;
+  c.height = size.height;
+  c.width = size.width;
 });
 
 const playerDrawer = new PlayerDrawer(canvasCol[0]);
-
 // 字体大小
 document.getElementById("widthRange").addEventListener("change", function(ev) {
   playerDrawer.width = +ev.target.value;
@@ -39,7 +36,6 @@ document
   });
 
 const jsColorEl = document.querySelector(".jscolor");
-window.jsColorEl = jsColorEl;
 
 // 颜色选择
 jsColorEl.addEventListener(
@@ -83,15 +79,6 @@ playerClient.signal.channelEmitter.on("onChannelUserJoined", function(account) {
     });
   });
 });
-
-function strToArray(str, unitLength = 8000) {
-  let len = Math.ceil(str.length / unitLength),
-    ret = [];
-  for (let i = 0; i < len; i++) {
-    ret.push(str.slice(i * unitLength, (i + 1) * unitLength));
-  }
-  return ret;
-}
 
 function broadcastMessage(type) {
   return function(data) {

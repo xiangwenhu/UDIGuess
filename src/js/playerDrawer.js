@@ -81,9 +81,8 @@ export default class PlayerDrawer extends Drawer {
       }
     });
 
-    let info = browser(),
-      rate = super.getPixelRatio();
-    if (info.isPC) {
+    const rate = super.getPixelRatio();
+    if (browser.isPC) {
       this.setContexts({
         shadowColor: "#000",
         shadowBlur: rate,

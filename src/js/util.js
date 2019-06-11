@@ -9,8 +9,7 @@ const eventsMap = {
   click: "touchstart"
 };
 
-const browserInfo = browser();
-const isPc = browserInfo.isPc;
+const isPc = browser.isPc;
 
 export function getMouseEventName(name) {
   if (isPc) {
@@ -82,6 +81,16 @@ export function getSize(el) {
   };
 }
 
-function pxToNumer(str) {
+export function pxToNumer(str) {
   return +str.replace("px", "");
+}
+
+
+export function strToArray(str, unitLength = 8000) {
+  let len = Math.ceil(str.length / unitLength),
+    ret = [];
+  for (let i = 0; i < len; i++) {
+    ret.push(str.slice(i * unitLength, (i + 1) * unitLength));
+  }
+  return ret;
 }

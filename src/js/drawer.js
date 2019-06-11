@@ -22,14 +22,6 @@ export default class Drawer {
       canvas.width = width * rate;
       ctx.scale(rate, rate);
     }
-    /*
-    this.setContexts({
-      shadowColor: "#000",
-      shadowBlur: rate,
-      shadowOffsetX: 0,
-      shadowOffsetY: 1
-    }); */
-
     this.ctx.imageSmoothingEnabled = true;
   }
 
@@ -38,22 +30,22 @@ export default class Drawer {
     const canvas = this.canvas;
     const ctx = this.ctx;
     canvas.style.width = canvas.width + "px";
-    canvas.style.height = canvas.height + "px";  
+    canvas.style.height = canvas.height + "px";
     canvas.height = height * rate;
     canvas.width = width * rate;
     ctx.scale(rate, rate);
   }
 
   getPixelRatio() {
-    let ctx = this.ctx,
-      backingStore =
-        ctx.backingStorePixelRatio ||
-        ctx.webkitBackingStorePixelRatio ||
-        ctx.mozBackingStorePixelRatio ||
-        ctx.msBackingStorePixelRatio ||
-        ctx.oBackingStorePixelRatio ||
-        ctx.backingStorePixelRatio ||
-        1;
+    const ctx = this.ctx;
+    const backingStore =
+      ctx.backingStorePixelRatio ||
+      ctx.webkitBackingStorePixelRatio ||
+      ctx.mozBackingStorePixelRatio ||
+      ctx.msBackingStorePixelRatio ||
+      ctx.oBackingStorePixelRatio ||
+      ctx.backingStorePixelRatio ||
+      1;
     return (window.devicePixelRatio || 1) / backingStore;
   }
 
@@ -69,22 +61,21 @@ export default class Drawer {
     }
   }
 
-  setColor(color) {
-    this.strokeStyle = color;
-    // this.setContext("shadowColor", color);
-    this.ctx.shadowColor = color;
-  }
-
-  setLineWith(width) {
-    this.lineWidth = width;
-  }
-
   getColor() {
     return this.strokeStyle;
   }
 
+  setColor(color) {
+    this.strokeStyle = color;
+    this.ctx.shadowColor = color;
+  }
+
   getLineWith() {
     return this.lineWidth;
+  }
+
+  setLineWith(width) {
+    this.lineWidth = width;
   }
 
   clear(point) {
@@ -102,6 +93,7 @@ export default class Drawer {
       ctx.restore();
     }
   }
+
   getWH() {
     return {
       height: this.canvas.height,
@@ -122,7 +114,7 @@ export default class Drawer {
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
     ctx.lineTo(point.x, point.y);
-    // ctx.stroke(); //画一个点
+    ctx.stroke(); //画一个点
   }
 
   drawMove(point) {

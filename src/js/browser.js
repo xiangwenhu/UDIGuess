@@ -1,4 +1,4 @@
-export default function browser() {
+export default (function browser() {
   let ua = navigator.userAgent,
     isWindowsPhone = /(?:Windows Phone)/.test(ua),
     isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone,
@@ -18,4 +18,4 @@ export default function browser() {
     isPc,
     isChrome
   };
-}
+})();
